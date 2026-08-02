@@ -1,0 +1,6 @@
+interface:
+  display_name: "Tickets Review"
+  short_description: "Audit ticket sets before implementation"
+  default_prompt: "Use $tickets-review to audit these tickets against their source spec."
+policy:
+  allow_implicit_invocation: false
