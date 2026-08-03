@@ -75,5 +75,8 @@ After the review loop is clear, run the full test suite once. Mark the ticket
 complete only when its focused tests and the full suite pass and no material
 review finding remains unresolved.
 
+After completing the ticket, update it and check off every acceptance criterion
+that the implementation has verified. Leave any unverified checkbox unchecked.
+
 Report the ticket's commits, tests, review rounds, and any remaining concerns,
 then continue with the next unblocked ticket.
