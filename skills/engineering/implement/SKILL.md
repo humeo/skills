@@ -43,7 +43,7 @@ Use the `/tdd` skill where applicable. Work in independently testable vertical
 slices and keep the change within the ticket's scope.
 
 Run the ticket's focused tests and relevant typechecking before committing. Do
-not commit while a known failure remains unexplained. Use the `/git-commit` skill
+not commit while a known failure remains unexplained. Use the `$git-commit` skill
 to stage only files belonging to the ticket, inspect the staged diff, and create
 the commit. Exclude unrelated changes, secrets, caches, build output, and runtime
 artifacts.
@@ -55,7 +55,7 @@ only when they pass.
 
 Create a dedicated code-review subagent. Give it the complete ticket, acceptance
 criteria, exact committed diff or fixed range, and the review brief required by
-the `/code-review` skill. The reviewer reports findings; it does not modify the
+the `$code-review` skill. The reviewer reports findings; it does not modify the
 implementation.
 
 The main agent owns the review loop:
@@ -63,7 +63,7 @@ The main agent owns the review loop:
 1. Evaluate every finding.
 2. Fix valid findings.
 3. Rerun the focused tests covering each fix.
-4. Commit the fixes with `/git-commit`.
+4. Commit the fixes with `$git-commit`.
 5. Request another review of the updated range.
 
 Run at most three review rounds per ticket. If material findings remain after
