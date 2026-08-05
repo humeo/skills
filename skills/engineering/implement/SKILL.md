@@ -73,38 +73,18 @@ the change. Exclude unrelated changes and runtime artifacts.
 
 ### 3. Review
 
-Before requesting external review, perform a review-stage quality pass over the
-complete diff. Check:
+After the ticket's focused checks pass, invoke `$code-review` with:
 
-- acceptance-criteria coverage;
-- module ownership and interface boundaries;
-- error and state transitions;
-- concurrency and transaction behavior;
-- compatibility and migration behavior;
-- unnecessary duplication or complexity.
+- the commit immediately before the ticket as the fixed point;
+- the ticket or approved specification as the spec source.
 
-Fix known problems, rerun affected focused checks, and commit the result.
+Each invocation counts as one review round.
 
-Create a dedicated read-only review subagent. Give it the complete ticket,
-acceptance criteria, and exact committed diff or range. The reviewer reports
-findings and must not modify files or operate shared runtime services.
+Evaluate the findings. If any material finding is valid, fix valid findings as
+one coherent batch, run the affected focused checks, commit the fixes, and invoke
+`$code-review` again against the same fixed point.
 
-Every review request counts as one round.
-
-After each round:
-
-1. Evaluate all findings.
-2. Record the rationale for rejected findings.
-3. Fix valid findings as one coherent batch.
-4. Rerun only affected focused checks.
-5. Commit the fixes.
-6. Request another review only if required.
-
-Use at most three review rounds. If material findings remain after round three,
-mark the ticket blocked and continue only independent tickets. Never start a
-fourth round.
-
-A passing focused result remains valid while its reviewed commit is unchanged.
+Stop when both review axes have no unresolved material findings.
 
 ### 4. Complete the ticket
 
